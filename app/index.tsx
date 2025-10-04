@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from "react";
-import { FlatList, TouchableOpacity, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet, View, Pressable } from "react-native";
 import { useRouter, useFocusEffect } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import {
@@ -55,10 +55,7 @@ export default function Index() {
   };
 
   const renderCrimeItem = ({ item }: { item: Crime }) => (
-    <TouchableOpacity
-      onPress={() => navigateToDetail(item.id)}
-      activeOpacity={0.7}
-    >
+    <Pressable onPress={() => navigateToDetail(item.id)}>
       <ThemedCard style={styles.crimeCard}>
         <View style={styles.crimeContent}>
           <View style={styles.crimeInfo}>
@@ -78,7 +75,7 @@ export default function Index() {
           )}
         </View>
       </ThemedCard>
-    </TouchableOpacity>
+    </Pressable>
   );
 
   return (

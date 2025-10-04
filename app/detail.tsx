@@ -4,7 +4,7 @@ import {
   StyleSheet,
   ScrollView,
   Image,
-  TouchableOpacity,
+  Pressable,
   Platform,
   Alert,
   Switch,
@@ -212,7 +212,7 @@ export default function Detail() {
           {/* Date Button */}
           <View style={styles.fieldContainer}>
             <ThemedText style={styles.label}>Date</ThemedText>
-            <TouchableOpacity
+            <Pressable
               onPress={() => setShowDatePicker(true)}
               style={[
                 styles.dateButton,
@@ -221,7 +221,6 @@ export default function Detail() {
                   borderColor: theme.colors.border,
                 },
               ]}
-              activeOpacity={0.7}
             >
               <Ionicons
                 name="calendar-outline"
@@ -231,7 +230,7 @@ export default function Detail() {
               <ThemedText style={styles.dateText}>
                 {formatDate(date)}
               </ThemedText>
-            </TouchableOpacity>
+            </Pressable>
           </View>
 
           {/* Solved Checkbox */}
@@ -258,7 +257,7 @@ export default function Detail() {
           {/* Camera Button */}
           <View style={styles.fieldContainer}>
             <ThemedText style={styles.label}>Evidence Photo</ThemedText>
-            <TouchableOpacity
+            <Pressable
               onPress={pickImage}
               style={[
                 styles.cameraButton,
@@ -267,7 +266,6 @@ export default function Detail() {
                   borderColor: theme.colors.border,
                 },
               ]}
-              activeOpacity={0.7}
             >
               <Ionicons
                 name="camera-outline"
@@ -277,7 +275,7 @@ export default function Detail() {
               <ThemedText style={styles.cameraText}>
                 {photoUri ? "Change Photo" : "Add Photo"}
               </ThemedText>
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </ThemedCard>
 

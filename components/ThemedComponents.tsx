@@ -3,7 +3,7 @@ import {
   View,
   Text,
   TextInput,
-  TouchableOpacity,
+  Pressable,
   ViewStyle,
   TextStyle,
   TextInputProps,
@@ -137,10 +137,10 @@ export function ThemedButton({
   };
 
   return (
-    <TouchableOpacity
+    <Pressable
       onPress={onPress}
       disabled={disabled}
-      style={[
+      style={({ pressed }) => [
         {
           backgroundColor: getBackgroundColor(),
           padding: 14,
@@ -148,10 +148,10 @@ export function ThemedButton({
           alignItems: "center",
           borderWidth: variant === "secondary" ? 1 : 0,
           borderColor: theme.colors.primary,
+          opacity: pressed ? 0.7 : 1,
         },
         style,
       ]}
-      activeOpacity={0.7}
     >
       <Text
         style={{
@@ -162,7 +162,7 @@ export function ThemedButton({
       >
         {title}
       </Text>
-    </TouchableOpacity>
+    </Pressable>
   );
 }
 
@@ -175,19 +175,19 @@ interface IconButtonProps {
 
 export function IconButton({ onPress, icon, style }: IconButtonProps) {
   return (
-    <TouchableOpacity
+    <Pressable
       onPress={onPress}
-      style={[
+      style={({ pressed }) => [
         {
           padding: 8,
           justifyContent: "center",
           alignItems: "center",
+          opacity: pressed ? 0.7 : 1,
         },
         style,
       ]}
-      activeOpacity={0.7}
     >
       {icon}
-    </TouchableOpacity>
+    </Pressable>
   );
 }

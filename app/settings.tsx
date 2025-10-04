@@ -1,12 +1,5 @@
-//settings screen
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-  Text,
-} from "react-native";
+import { View, StyleSheet, ScrollView, Pressable, Text } from "react-native";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import {
@@ -54,11 +47,13 @@ export default function Settings() {
 
         <View style={styles.themesContainer}>
           {themes.map((t) => (
-            <TouchableOpacity
+            <Pressable
               key={t.id}
               onPress={() => setTheme(t)}
-              activeOpacity={0.7}
-              style={styles.themeButton}
+              style={({ pressed }) => [
+                styles.themeButton,
+                { opacity: pressed ? 0.7 : 1 },
+              ]}
             >
               <ThemedCard
                 style={[
@@ -111,7 +106,7 @@ export default function Settings() {
                   </Text>
                 </View>
               </ThemedCard>
-            </TouchableOpacity>
+            </Pressable>
           ))}
         </View>
       </ScrollView>
